@@ -263,6 +263,56 @@
     [data-reveal]{opacity:1; transform:none; transition:none;}
     html{scroll-behavior:auto;}
   }
+
+  /* ---------- fuller-feel enrichments (visual only, no new copy) ---------- */
+  .hero::before{
+    content:''; position:absolute; top:-140px; right:-180px; z-index:0;
+    width:560px; height:560px; border-radius:50%;
+    border:1px solid rgba(184,127,74,.16);
+    box-shadow:0 0 0 44px rgba(184,127,74,.045), 0 0 0 88px rgba(201,162,39,.035);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative; z-index:1;}
+  .hero-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+  .hero-tag{
+    font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--walnut-700); border:1px solid rgba(33,26,19,.18);
+    padding:7px 14px; border-radius:999px; background:rgba(255,255,255,.35);
+  }
+
+  .trust-item .icon{width:17px; height:17px; margin-bottom:7px; color:var(--oak-500); display:block;}
+
+  .service-card{position:relative; overflow:hidden;}
+  .service-card .icon{width:24px; height:24px; margin-bottom:12px; color:var(--oak-500); display:block;}
+  .service-card::after{
+    content:''; position:absolute; right:-28px; bottom:-28px;
+    width:84px; height:84px; border-radius:50%;
+    border:1px solid rgba(184,127,74,.14); pointer-events:none;
+  }
+
+  .about{position:relative; overflow:hidden;}
+  .about::before{
+    content:''; position:absolute; left:-160px; top:50%; transform:translateY(-50%); z-index:0;
+    width:440px; height:440px; border-radius:50%;
+    border:1px solid rgba(217,176,136,.14);
+    box-shadow:0 0 0 64px rgba(217,176,136,.045);
+    pointer-events:none;
+  }
+  .about .wrap{position:relative; z-index:1;}
+
+  .testimonial{position:relative;}
+  .testimonial .quote-mark{
+    position:absolute; top:-6px; left:0; font-family:var(--display); font-size:150px;
+    color:rgba(184,127,74,.14); line-height:1; pointer-events:none; user-select:none;
+  }
+  .testimonial .wrap{position:relative;}
+
+  .contact-info dl > div{display:flex; gap:14px; align-items:flex-start;}
+  .contact-info .icon{width:16px; height:16px; margin-top:5px; color:var(--oak-500); flex-shrink:0;}
+
+  .section-divider{display:flex; align-items:center; justify-content:center; gap:9px; padding:44px 0 0;}
+  .section-divider span{width:5px; height:5px; border-radius:50%; background:var(--oak-500); opacity:.45;}
+  .section-divider span:nth-child(2){width:6px; height:6px; background:var(--brass-400); opacity:.8;}
 </style>
 </head>
 <body>
@@ -292,6 +342,12 @@
           <a href="tel:+15613628833" class="btn-primary">Call (561) 362-8833</a>
           <a href="#contact" class="btn-secondary">Request a quote</a>
         </div>
+        <div class="hero-tags" aria-hidden="true">
+          <span class="hero-tag">Kitchens</span>
+          <span class="hero-tag">Baths</span>
+          <span class="hero-tag">Closets</span>
+          <span class="hero-tag">Furniture</span>
+        </div>
       </div>
       <div class="rings-figure" aria-hidden="true">
         <svg viewBox="0 0 460 460" fill="none">
@@ -311,10 +367,22 @@
 
   <div class="trust">
     <div class="wrap">
-      <div class="trust-item"><span class="num">5.0 ★</span><span class="lab">GOOGLE RATING</span></div>
-      <div class="trust-item"><span class="num">1993</span><span class="lab">FOUNDED IN BOCA RATON</span></div>
-      <div class="trust-item"><span class="num">30+</span><span class="lab">YEARS IN THE SHOP</span></div>
-      <div class="trust-item"><span class="num">100%</span><span class="lab">CUSTOM, BUILT ON-SITE</span></div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.2 6.1-.7L12 3Z"/></svg>
+        <span class="num">5.0 ★</span><span class="lab">GOOGLE RATING</span>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="4.5" width="17" height="16" rx="1.5"/><path d="M3.5 9.5h17M8 3v3M16 3v3"/></svg>
+        <span class="num">1993</span><span class="lab">FOUNDED IN BOCA RATON</span>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+        <span class="num">30+</span><span class="lab">YEARS IN THE SHOP</span>
+      </div>
+      <div class="trust-item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 17.5 10 5l4 8 2.5-4L20 17.5"/><path d="M4 17.5h16"/></svg>
+        <span class="num">100%</span><span class="lab">CUSTOM, BUILT ON-SITE</span>
+      </div>
     </div>
   </div>
 
@@ -327,31 +395,37 @@
       </div>
       <div class="services-grid" data-reveal>
         <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="1"/><path d="M3.5 9.5h17M9.5 9.5v11"/></svg>
           <span class="idx">01</span>
           <h3>Custom cabinet design &amp; installation</h3>
           <p>Kitchen and bath cabinetry designed around your layout and built in the shop, then installed and leveled on-site.</p>
         </div>
         <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20 15 9l3 3-11 11H4v-3Z"/><path d="M13 11l3-3"/></svg>
           <span class="idx">02</span>
           <h3>Cabinet refacing &amp; refinishing</h3>
           <p>New doors, veneers, and finishes over your existing boxes — a full kitchen look without a full demolition.</p>
         </div>
         <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h9l3 3v13H6z"/><path d="M9 12h6M9 16h6"/></svg>
           <span class="idx">03</span>
           <h3>Cabinet painting</h3>
           <p>Sprayed, factory-grade finishes in the color and sheen you want, done in a controlled shop environment.</p>
         </div>
         <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 6.5a3 3 0 0 0 4 4L21 8l-4-4-2.5 2.5Z"/><path d="M14 8 5 17l-1 3 3-1 9-9"/></svg>
           <span class="idx">04</span>
           <h3>Cabinet repair</h3>
           <p>Sagging doors, water damage, broken drawer boxes — repaired and matched to the surrounding cabinetry.</p>
         </div>
         <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v3M8 8h8l-1.5 12h-5L8 8Z"/><circle cx="12" cy="5" r="1.6"/></svg>
           <span class="idx">05</span>
           <h3>Custom closet design &amp; installation</h3>
           <p>Built-in closet systems sized to your actual wardrobe and space, not a modular kit.</p>
         </div>
         <div class="service-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 13h16M4 18h10"/></svg>
           <span class="idx">06</span>
           <h3>Closet woodworking</h3>
           <p>Solid-wood shelving, drawer inserts, and finish carpentry for reach-ins, walk-ins, and pantries.</p>
@@ -392,6 +466,7 @@
 
   <section class="testimonial" id="reviews">
     <div class="wrap" data-reveal>
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
       <p class="stars">★★★★★</p>
       <blockquote>Neighbors describe a shop that can take almost any idea and build it well — the kind of consistent craftsmanship that makes a local business easy to trust for years.</blockquote>
       <p class="attr">— Paraphrased from Google reviews · 5.0 rating across 4 reviews</p>
@@ -405,20 +480,32 @@
         <h2 style="font-family:var(--display); font-weight:600; font-size:clamp(28px,3.4vw,38px); margin-top:12px;">Stop by the shop or start with a call.</h2>
         <dl>
           <div>
-            <dt>Address</dt>
-            <dd><a href="https://maps.google.com/?q=134+NW+11th+St,+Boca+Raton,+FL+33432" target="_blank" rel="noopener">134 NW 11th St, Boca Raton, FL 33432</a></dd>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-7.1 7-12a7 7 0 1 0-14 0c0 4.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+            <div>
+              <dt>Address</dt>
+              <dd><a href="https://maps.google.com/?q=134+NW+11th+St,+Boca+Raton,+FL+33432" target="_blank" rel="noopener">134 NW 11th St, Boca Raton, FL 33432</a></dd>
+            </div>
           </div>
           <div>
-            <dt>Phone</dt>
-            <dd><a href="tel:+15613628833">(561) 362-8833</a></dd>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4.5h3.5l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5l1.5-2 4 1.5V19a1.5 1.5 0 0 1-1.6 1.5A15.5 15.5 0 0 1 3.5 6.1 1.5 1.5 0 0 1 5 4.5Z"/></svg>
+            <div>
+              <dt>Phone</dt>
+              <dd><a href="tel:+15613628833">(561) 362-8833</a></dd>
+            </div>
           </div>
           <div>
-            <dt>Email</dt>
-            <dd><a href="mailto:creations134@gmail.com">creations134@gmail.com</a></dd>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4 6.5 12 13l8-6.5"/></svg>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:creations134@gmail.com">creations134@gmail.com</a></dd>
+            </div>
           </div>
           <div>
-            <dt>Follow</dt>
-            <dd><a href="https://www.facebook.com/CreationsUnlimitedbyVince/" target="_blank" rel="noopener">Facebook</a></dd>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8M12 8v8"/></svg>
+            <div>
+              <dt>Follow</dt>
+              <dd><a href="https://www.facebook.com/CreationsUnlimitedbyVince/" target="_blank" rel="noopener">Facebook</a></dd>
+            </div>
           </div>
         </dl>
         <table class="hours-table">
